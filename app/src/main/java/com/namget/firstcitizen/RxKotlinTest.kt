@@ -102,7 +102,6 @@ class RxKotlinTest : AppCompatActivity() {
     }
 
 
-
     fun q1() {
         val observable1: Observable<String> = Observable.create {
             it.onNext("a")
@@ -110,18 +109,56 @@ class RxKotlinTest : AppCompatActivity() {
             it.onComplete()
         }
 
-        val observable2: Observable<String> = Observable.defer {
-            loge("createTest CreateObservable :")
-            Observable.just("1","2","3","4")
-        }
 
-        observable2
-            .subscribeOn(AndroidSchedulers.mainThread())
+//        val observable2: Observable<String> = Observable.defer {
+//            loge("createTest CreateObservable :")
+//            Observable.just("1", "2", "3", "4")
+//        }
+//
+//        observable2.subscribeOn(AndroidSchedulers.mainThread())
+//            .subscribe(
+//                { loge("onNext : ${it}") },
+//                { loge("onError : ${it}") },
+//                { loge("onComplete") }
+//            )
+
+//        val intervalObservable: Observable<Long> =
+//            Observable.interval(2, TimeUnit.SECONDS)
+
+        val start = 5
+        val count = 3
+        val timerObservable: Observable<Long> =
+            Observable.timer(5, TimeUnit.SECONDS)
+                .doOnSubscribe { loge("onSubscribe") }
+        timerObservable.subscribeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { loge("createTest onNext : ${it}") },
-                { loge("createTest onError : ${it}") },
-                { loge("createTest onComplete") }
+                { loge("onNext : ${it}") },
+                { loge("onError : ${it}") },
+                { loge("onComplete") }
             )
+
+
+//        val observableJust: Observable<String> = Observable.just("1", "2","abc","1234","aaa")
+
+//        val fromCallableObservable: Observable<Int> = Observable.fromCallable {
+//            1
+//        }
+//        fromCallableObservable
+//            .subscribeOn(AndroidSchedulers.mainThread())
+//            .subscribe(
+//                { loge("onNext : ${it}") },
+//                { loge("onError : ${it}") },
+//                { loge("onComplete") }
+//            )
+
+//
+//        observable2
+//            .subscribeOn(AndroidSchedulers.mainThread())
+//            .subscribe(
+//                { loge("createTest onNext : ${it}") },
+//                { loge("createTest onError : ${it}") },
+//                { loge("createTest onComplete") }
+//            )
 
 
         val single: Single<String> = Single.just("1")
