@@ -1,4 +1,4 @@
-package com.namget.firstcitizen.DIP
+package com.namget.firstcitizen.dip
 
 interface NoteBook {
     fun powerOn()

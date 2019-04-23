@@ -1,4 +1,4 @@
-package com.namget.firstcitizen.DIP
+package com.namget.firstcitizen.dip
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
