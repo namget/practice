@@ -1,7 +1,5 @@
 package com.namget.firstcitizen.lsp
 
-import com.namget.firstcitizen.R
-
 
 //직사각형
 open class Rectangle() {
@@ -37,6 +35,7 @@ class Square() : Rectangle() {
             width = value
             height = value
         }
+
 }
 
 

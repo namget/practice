@@ -16,21 +16,12 @@ class DIPActivity : AppCompatActivity() {
         developer.noteBook = LGNoteBook()
         developer.develop()
 
-
     }
-
-
-    enum class a{
-        A,B,C
-    }
-
 
     data class Developer(var noteBook: NoteBook) {
-
         fun develop() {
             noteBook.powerOn()
         }
-
     }
 
 }
