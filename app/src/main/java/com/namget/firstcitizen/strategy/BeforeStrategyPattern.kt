@@ -5,3 +5,8 @@ abstract class BeforeDuck(){
     fun swim() = println("수영가능합니다.")
     abstract fun display()
 }
+
+
+fun a(){
+    val a : BeforeDuck
+}
