@@ -9,8 +9,10 @@ class StrategySimulator : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val mallardDuck = MallardDuck()
-        mallardDuck.performQuack()
-        mallardDuck.performFly()
+        mallardDuck.performQuack() //  print 꿱꿱
+        mallardDuck.performFly() // 오리날다.
+        mallardDuck.flyBehavior = FlyNoWay()
+        mallardDuck.quackBehavior = Squeak()
 
     }
 }
