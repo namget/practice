@@ -8,7 +8,6 @@ public class JavaTest extends AppCompatActivity {
 
     private final int MAX = 1;
 
-
     public void javaFunction(int num, String name, double height) {
         //Todo
     }

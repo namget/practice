@@ -16,31 +16,34 @@ class CharacterTest : AppCompatActivity() {
         warrior.weaponBehavior = SwordWeapon()
         warrior.move()
         warrior.attack()
-
-
     }
 }
 
 abstract class Character {
     open lateinit var weaponBehavior: WeaponBehavior
-    fun move() = print("적을 향해 이동중")
-    fun attack() = print(weaponBehavior.attackWeapon())
+    fun move() = println("적을 향해 이동중")
+    fun attack() = println(weaponBehavior.attackWeapon())
+    abstract fun display()
 }
 
 class Warrior : Character() {
-
+    override fun display() {
+    }
 }
 
 class Anchor : Character() {
-
+    override fun display() {
+    }
 }
 
 class Magician : Character() {
-
+    override fun display() {
+    }
 }
 
 class Cleric : Character() {
-
+    override fun display() {
+    }
 }
 
 interface WeaponBehavior {
@@ -48,32 +51,27 @@ interface WeaponBehavior {
     fun attackWeapon()
 }
 
-//과연 특정 직업에 한정되게 무기를 끼게하려면 어떻게 하는것이 좋을까... 고민 ㄱㄱ
-class Sword() {
-
-}
-
 class SwordWeapon : WeaponBehavior {
     override fun getWeaponName(): String = "검"
-    override fun attackWeapon() = println("${getWeaponName()}을 꼈다.")
+    override fun attackWeapon() = println("${getWeaponName()}으로 공격.")
 }
 
 class LongSwordWeapon : WeaponBehavior {
     override fun getWeaponName(): String = "롱소드"
-    override fun attackWeapon() = println("${getWeaponName()}을 꼈다.")
+    override fun attackWeapon() = println("${getWeaponName()}로 공격.")
 }
 
 class CaneWeapon : WeaponBehavior {
     override fun getWeaponName(): String = "지팡이"
-    override fun attackWeapon() = println("${getWeaponName()}를 꼈다.")
+    override fun attackWeapon() = println("${getWeaponName()}로 공격.")
 }
 
 class BowWeapon : WeaponBehavior {
     override fun getWeaponName(): String = "활"
-    override fun attackWeapon() = println("${getWeaponName()}을 꼈다.")
+    override fun attackWeapon() = println("${getWeaponName()}로 공격.")
 }
 
 class CrossWeapon : WeaponBehavior {
     override fun getWeaponName(): String = "십자가"
-    override fun attackWeapon() = println("${getWeaponName()}를 꼈다.")
+    override fun attackWeapon() = println("${getWeaponName()}로 공격.")
 }
