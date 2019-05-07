@@ -16,14 +16,15 @@ class DecorationTest : AppCompatActivity() {
     fun main() {
         var beverage: Beverage = Espresso()
         beverage.beverageSize = BeverageSize.GRANDE
-        beverage = Soy(beverage)
         beverage = Mocha(beverage)
         beverage = Whip(beverage)
+        beverage = Soy(beverage)
         println("description : ${beverage.getDescription()} cost : ${beverage.cost()}")
 
     }
 
 }
+
 enum class BeverageSize() {
     VENTI, GRANDE, TALL
 }
@@ -32,7 +33,6 @@ enum class BeverageSize() {
 //음료의 상위클래스
 abstract class Beverage() {
     open var beverageSize: BeverageSize = BeverageSize.GRANDE
-
     abstract fun getDescription(): String
     abstract fun cost(): Double
 }
@@ -55,7 +55,21 @@ abstract class CondimentDecorator : Beverage() {
 
 class Mocha(val beverage: Beverage) : CondimentDecorator() {
     override fun getDescription(): String = beverage.getDescription() + " 모카"
-    override fun cost(): Double = beverage.cost() + 0.20
+    override fun cost(): Double {
+        var price: Double = 0.0
+        when (beverage.beverageSize) {
+            BeverageSize.VENTI -> {
+                price = 0.20
+            }
+            BeverageSize.GRANDE -> {
+                price = 0.15
+            }
+            BeverageSize.TALL -> {
+                price = 0.1
+            }
+        }
+        return beverage.cost() + price
+    }
 }
 
 class Soy(val beverage: Beverage) : CondimentDecorator() {
