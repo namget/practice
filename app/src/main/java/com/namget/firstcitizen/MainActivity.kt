@@ -336,7 +336,7 @@ class MainActivity : AppCompatActivity() {
 //        fun copy(from: Array<out Any>, to: Array<Any>) {  }
 //        fun fill(dest: Array<in String>, value: String) { }
 //
-//        class Array<T>(val size: Int) {
+//        class Array<T>(val beverageSize: Int) {
 //            fun get(index: Int): T {  }
 //            fun set(index: Int, value: T) {  }
 //        }

@@ -15,7 +15,7 @@ class DecorationTest : AppCompatActivity() {
 
     fun main() {
         var beverage: Beverage = Espresso()
-        beverage.size = Beverage.Size.GRANDE
+        beverage.beverageSize = BeverageSize.GRANDE
         beverage = Soy(beverage)
         beverage = Mocha(beverage)
         beverage = Whip(beverage)
@@ -24,15 +24,14 @@ class DecorationTest : AppCompatActivity() {
     }
 
 }
+enum class BeverageSize() {
+    VENTI, GRANDE, TALL
+}
 
 
 //음료의 상위클래스
 abstract class Beverage() {
-    open var size: Size = Size.GRANDE
-
-    enum class Size() {
-        VENTI, GRANDE, TALL
-    }
+    open var beverageSize: BeverageSize = BeverageSize.GRANDE
 
     abstract fun getDescription(): String
     abstract fun cost(): Double
