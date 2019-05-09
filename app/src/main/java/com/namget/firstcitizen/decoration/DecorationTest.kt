@@ -51,6 +51,9 @@ class Espresso() : Beverage() {
 
 // 첨가물 데코레이터
 abstract class CondimentDecorator : Beverage() {
+
+
+    
 }
 
 class Mocha(val beverage: Beverage) : CondimentDecorator() {
