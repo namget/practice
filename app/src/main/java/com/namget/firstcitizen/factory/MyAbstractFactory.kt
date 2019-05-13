@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.namget.firstcitizen.R
 
-class MyAbstractFactory : AppCompatActivity(){
+class MyAbstractFactory : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -12,11 +12,11 @@ class MyAbstractFactory : AppCompatActivity(){
     }
 }
 
-fun main2(){
+fun main2() {
 
 }
 
-interface RamenIngedientFactory{
+interface RamenIngedientFactory {
     fun putWater()
     fun putSauce()
     fun putNoodle()
@@ -27,11 +27,27 @@ interface Sauce
 interface Noodle
 
 
+class KRSinRamenFactory : RamenIngedientFactory {
+    override fun putWater(): Water = println()
+    override fun putSauce(): Sauce = println()
+    override fun putNoodle(): Noodle = println()
+}
 
-//class KRNugoriFactory : RamenIngedientFactory{
-//
-//}
-//
-//class JPNugoriFactory : RamenIngedientFactory{
-//
-//}
+class JPSinRamenFactory : RamenIngedientFactory {
+    override fun putWater(): Water = println()
+    override fun putSauce(): Sauce = println()
+    override fun putNoodle(): Noodle = println()
+}
+
+
+class KRNugoriFactory : RamenIngedientFactory {
+    override fun putWater(): Water = println()
+    override fun putSauce(): Sauce = println()
+    override fun putNoodle(): Noodle = println()
+}
+
+class JPNugoriFactory : RamenIngedientFactory {
+    override fun putWater(): Water = println()
+    override fun putSauce(): Sauce = println()
+    override fun putNoodle(): Noodle = println()
+}
