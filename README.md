@@ -1,3 +1,3 @@
-### headfirst design pattern study
+### -headfirst design pattern study
 headfirstDesignPattern
 
