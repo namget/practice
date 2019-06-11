@@ -12,6 +12,11 @@ class IteratorTest : AppCompatActivity() {
 }
 
 
+public interface Menu{
+    fun createIterator() : Iterator<MenuItem>
+}
+
+
 class MenuItem(
     val name: String,
     val description: String,
@@ -27,7 +32,7 @@ class pancakeHouseMenu(val menuItems: ArrayList<MenuItem> = arrayListOf()) {
         addItem("펜케이크4", "맛있음4", true, 3.59)
     }
 
-    fun createIterator(): Iterator<MenuItem> = PancakeHouseIterator(menuItems)
+    fun createIterator(): Iterator<MenuItem> = menuItems.iterator()
 
 
     fun addItem(
@@ -51,7 +56,7 @@ class DinerMenu(var menuItems: Array<MenuItem?>) {
         addItem("핫도그", "맛있음4", false, 3.05)
     }
 
-    fun createIterator(): Iterator<MenuItem> = DinerMenuIterator(menuItems)
+    fun createIterator(): Iterator<MenuItem?> = menuItems.iterator()
 
     fun addItem(
         name: String,
@@ -102,7 +107,7 @@ class PancakeHouseIterator(val items: ArrayList<MenuItem>) : Iterator<MenuItem> 
     }
 }
 
-class Waitress(val pancakeHouseMenu: pancakeHouseMenu, val dinerMenu: DinerMenu) {
+class Waitress(val pancakeHouseMenu: Menu, val dinerMenu: Menu) {
     fun printMenu() {
         val pancakeHouseIterator: Iterator<MenuItem> = pancakeHouseMenu.createIterator()
         val dinerIterator: Iterator<MenuItem> = dinerMenu.createIterator()
