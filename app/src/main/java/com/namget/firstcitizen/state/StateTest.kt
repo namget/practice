@@ -11,7 +11,6 @@ class StateTest : AppCompatActivity() {
     }
 }
 
-
 class GumballMachine(val count: Int) {
     val soldOutState: State
     val noQuarterState: State
