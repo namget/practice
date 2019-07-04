@@ -2,7 +2,6 @@ package com.namget.firstcitizen.compound
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import java.util.*
 import kotlin.collections.ArrayList
 
 class CompoundTest : AppCompatActivity() {
@@ -81,12 +80,25 @@ class GooseAdapter(val goose: Goose) : Quackable {
 }
 
 class QuackCounterDecorator(val duck: Quackable) : Quackable {
+    val observable : Observable
+    init {
+        observable = Observable(this)
+    }
     companion object {
         var numberOfQuacks = 0
     }
 
+    override fun registerObserver(observer: Observer) {
+        observable.registerObserver(observer)
+    }
+
+    override fun notifyObserver() {
+        observable.notifyObserver()
+    }
+
     override fun quack() {
         duck.quack()
+        notifyObserver()
         numberOfQuacks++
     }
 }
@@ -116,10 +128,23 @@ class CountingDuckFactory : AbstractDuckFactory() {
 }
 
 class Flock : Quackable {
+
+    val observers = ArrayList<Observable>()
     val quackers = ArrayList<Quackable>()
 
     fun add(quacker: Quackable) {
         quackers.add(quacker)
+        val observer =  Observable(quacker)
+        observers.add()
+    }
+
+
+    override fun registerObserver(observer: Observer) {
+
+    }
+
+    override fun notifyObserver() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun quack() {
@@ -130,6 +155,14 @@ class Flock : Quackable {
         }
     }
 }
+
+interface Observer{
+    fun update(duck : QuackObservable)
+}
+class Quacklogist : Observer{
+    override fun update(duck: QuackObservable) = println("Quackologist : " + duck + "just quacked")
+}
+
 
 interface QuackObservable {
     fun registerObserver(observer: Observer)
@@ -147,7 +180,7 @@ class Observable(val duck: QuackObservable) : QuackObservable {
         val iterator: Iterator<Observer> = observers.iterator()
         while (iterator.hasNext()) {
             val observer = iterator.next()
-            observer.update(Observable(), duck)
+            observer.update(duck)
         }
     }
 }
